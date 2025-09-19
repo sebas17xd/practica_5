@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Argentina</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    header {
+      background-color: #2980b9;
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+    .carousel-container {
+      max-width: 700px;
+      width: 100%;
+      position: relative;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .carousel-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .carousel-buttons {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    button {
+      background-color: #2980b9;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #1f5d8a;
+    }
+    .description {
+      max-width: 700px;
+      margin: 25px auto;
+      font-size: 1.2em;
+      color: #333;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .back-button {
+      margin-top: 30px;
+      background-color: #3498db;
+      padding: 12px 25px;
+      border-radius: 6px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      transition: background-color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Argentina</header>
+
+  <div class="carousel-container">
+    <img id="carousel-image" class="carousel-image" src="https://flagcdn.com/w320/ar.png" alt="Bandera de Argentina" />
+    
+    <div class="carousel-buttons">
+      <button onclick="prevImage()">Anterior</button>
+      <button onclick="nextImage()">Siguiente</button>
+    </div>
+  </div>
+
+  <div class="description" id="description-text">
+    Argentina es famosa por el tango, la Patagonia, sus vinos y la pasión por el fútbol. Buenos Aires es una ciudad culturalmente vibrante con mucha historia y arte.
+  </div>
+
+  <a href="../index.html" class="back-button">Volver al inicio</a>
+
+  <script>
+    const images = [
+      {
+        src: 'https://flagcdn.com/w320/ar.png',
+        alt: 'Bandera de Argentina'
+      },
+      {
+        src: 'https://upload.wikimedia.org/wikipedia/commons/1/11/Perito_Moreno_Glacier_Argentina_2015.jpg',
+        alt: 'Glaciar Perito Moreno'
+      },
+      {
+        src: 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Tango_in_Buenos_Aires.jpg',
+        alt: 'Tango en Buenos Aires'
+      }
+    ];
+
+    let currentIndex = 0;
+    const carouselImage = document.getElementById('carousel-image');
+
+    function showImage(index) {
+      const image = images[index];
+      carouselImage.src = image.src;
+      carouselImage.alt = image.alt;
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex);
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    }
+  </script>
+
+</body>
+</html>
