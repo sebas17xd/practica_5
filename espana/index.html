@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>España</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    header {
+      background-color: #c0392b;
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+    .carousel-container {
+      max-width: 700px;
+      width: 100%;
+      position: relative;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .carousel-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .carousel-buttons {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    button {
+      background-color: #c0392b;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #922b1a;
+    }
+    .description {
+      max-width: 700px;
+      margin: 25px auto;
+      font-size: 1.2em;
+      color: #333;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .back-button {
+      margin-top: 30px;
+      background-color: #3498db;
+      padding: 12px 25px;
+      border-radius: 6px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      transition: background-color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <header>España</header>
+
+  <div class="carousel-container">
+    <img id="carousel-image" class="carousel-image" src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="Imagen España" />
+    
+    <div class="carousel-buttons">
+      <button onclick="prevImage()">Anterior</button>
+      <button onclick="nextImage()">Siguiente</button>
+    </div>
+  </div>
+
+  <div class="description" id="description-text">
+    España es un país europeo con una historia rica y diversa. Es famoso por su arquitectura impresionante, su arte, y su vida cultural vibrante. Desde la Alhambra hasta la Sagrada Familia, pasando por el flamenco y las tapas, España ofrece experiencias inolvidables para quienes la visitan.
+  </div>
+
+  <a href="../index.html" class="back-button">Volver al inicio</a>
+
+  <script>
+    const images = [
+      {
+        src: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg',
+        alt: 'Bandera de España'
+      },
+      {
+        src: 'https://upload.wikimedia.org/wikipedia/commons/1/11/Madrid_City_View_-_Spain.jpg',
+        alt: 'Vista de Madrid'
+      },
+      {
+        src: 'https://upload.wikimedia.org/wikipedia/commons/3/36/Sagrada_Familia_01.jpg',
+        alt: 'Sagrada Familia en Barcelona'
+      }
+    ];
+
+    let currentIndex = 0;
+    const carouselImage = document.getElementById('carousel-image');
+
+    function showImage(index) {
+      const image = images[index];
+      carouselImage.src = image.src;
+      carouselImage.alt = image.alt;
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex);
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    }
+  </script>
+
+</body>
+</html>
